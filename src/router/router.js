@@ -1,12 +1,11 @@
-import VueRouter from "vue-router";
 import HomeComponent from"../components/HomeComponent.vue";
+import ProfileComponent from"../components/ProfileComponent.vue";
+import UsersComponent from"../components/ProfileComponent.vue";
 
-const router = new VueRouter ({
-	mode:'history',
-	base: __dirname,
-	routes:[
-		{path:'/',componant: HomeComponent }
+const routes = [
+		{path:'/',componant: HomeComponent },
+		{path:'/profile',componant: ProfileComponent },
+		{path:'/user',componant: UsersComponent}
 	]
-});
 
-export default router;
+export default routes;

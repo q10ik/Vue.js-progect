@@ -1,5 +1,7 @@
+
 <template>
-	<h2>Home Layout</h2>
+<h2>BaseLayout</h2>
+  <router-view></router-view>
 </template>
 
 
@@ -11,6 +13,7 @@ export default {
   }
 }
 </script>
+
 
 <style>
 
