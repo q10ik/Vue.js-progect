@@ -1,13 +1,8 @@
 <template>
   <div class="hello">
-    <nav>
-      <a href="">Домашняя страница</a>
-      <a href="">Пользователи</a>
-      <a href="">Мой пользователь</a> 
-    </nav>
     <h1>{{ msg }}</h1>
     <h2>{{ number }}</h2>
-    <button v-on:click="add"> add nimber</button>
+    <button v-on:click="add">add nimber</button>
     <p>
       Документацию можно рассмотреть здесь
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
@@ -18,13 +13,11 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  },
+  name: 'HomeComponent',
   data() {
     return{
       number: "1",
+      msg:"Hello",
     };
   },
   methods:{
