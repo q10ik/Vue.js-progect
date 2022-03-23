@@ -6,7 +6,7 @@ import routes from './router/router';
 
 Vue.use(VueRouter);
 
-var router = new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   base: __dirname,
   routes: routes

@@ -1,7 +1,9 @@
 
 <template>
+<div>
 <h2>BaseLayout</h2>
   <router-view></router-view>
+  </div>
 </template>
 
 
