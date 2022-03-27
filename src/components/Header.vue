@@ -1,24 +1,26 @@
 <template>
-  <div class="hello">
+  <div class="header">
     <nav>
-      <!-- <router-link to="/">Домашняя страница</router-link>
-      <router-link to="/profile">Пользователи</router-link>
-      <router-link to="/user">Мой пользователь</router-link> -->
-      <a href="/">Домашняя страница</a>
-      <a href="/profile">Пользователи</a>
-      <a href="/user">Мой пользователь</a> 
+      <router-link to="/">Домашняя страница</router-link>
+      <router-link to="/users">Пользователи</router-link>
+      <router-link to="/profile"><UserAvatarComponent user-avatar-text='Мой профиль' user-avatar-url='myprofile.jpg'/></router-link>
     </nav>
-<img alt="Vue logo" src="../assets/img/logo.png">
   </div>
 </template>
 
+
+
 <script>
+import UserAvatarComponent from '../controls/UserAvatarComponent.vue';
+
 export default {
   name: 'Header',
+  components:{
+    UserAvatarComponent 
+  },
   props: {
 
   },
-
   data() {
     return{
      
@@ -33,30 +35,18 @@ export default {
 
 
 <style scoped>
-h1{
-  margin-top: 100px;
-}
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 nav{
-  margin-top: 10px;
   display: flex;
   justify-content: space-evenly;
-}
-img{
-  margin-top: 5rem;
+  align-items: center;
 }
 a {
   color: #42b983;
   font-size: 2rem;
+}
+.header{
+   background: #11253d;
+   padding: 3rem 0 ;
+  max-height: 8.4rem;
 }
 </style>

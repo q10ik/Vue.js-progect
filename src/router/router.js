@@ -5,7 +5,7 @@ import UsersComponent from"../components/UsersComponent.vue";
 const routes = [
 		{path:'/', component: HomeComponent },
 		{path:'/profile', component: ProfileComponent },
-		{path:'/user', component: UsersComponent}
+		{path:'/users', component: UsersComponent}
 	]
 
 export default routes;

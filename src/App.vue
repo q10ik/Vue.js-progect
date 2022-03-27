@@ -1,19 +1,22 @@
 <template>
-  <div id="app">
+  <div class="wrapper" id="app">
     <Header></Header>
-    <BaseLayout></BaseLayout>
+      <BaseLayout></BaseLayout>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import BaseLayout from './layouts/BaseLayout.vue'
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 export default {
   name: 'App',
   components: {
     BaseLayout,
-    Header
+    Header,
+    Footer
   }
 }
 </script>
@@ -23,6 +26,5 @@ export default {
   @import "./assets/css/fonts.css";
 #app {
   text-align: center;
-  margin-top: 60px;
 }
 </style>
