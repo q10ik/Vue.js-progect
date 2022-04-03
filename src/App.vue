@@ -21,8 +21,9 @@ export default {
 }
 </script>
 
-<style>
-  @import "./assets/css/common.css";
+<style lang="scss">
+  @import "./assets/css/common/_style.scss";
+  @import "./assets/css/common/_responsive.scss";
   @import "./assets/css/fonts.css";
 #app {
   text-align: center;

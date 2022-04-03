@@ -1,12 +1,14 @@
 <template>
 	<div class="avatar">
-		<img :src="resolve_img_url(UrlProxy)" alt="">
-  <p>{{TextProxy}}</p>
+		<img :src="resolve_img_url(urlProxy)" alt="">
+  <p>{{textProxy}}</p>
 	</div>
 </template>
 
 
 <script>
+
+
 export default {
 	name:'UserAvatarComponent',
 	props:{
@@ -21,8 +23,8 @@ export default {
 	},
 	data() {
 		return{
-			TextProxy: this.UserAvatarText,
-			UrlProxy: this.UserAvatarUrl,
+			textProxy: this.UserAvatarText,
+			urlProxy: this.UserAvatarUrl,
 		};
   },
   methods:{
@@ -32,8 +34,11 @@ export default {
 	},
   },
 	watch:{
-		UserAvatarText(Newtext){
-			this.TextProxy= Newtext;
+		UserAvatarText(newtext){
+			this.textProxy= newtext;
+		},
+		UserAvatarUrl(newurl){
+			this.urlProxy= newurl;
 		}
 	}
 	
@@ -74,5 +79,20 @@ export default {
 	margin: 0;
 	font-size: 4rem;
 	height: 4rem;
+}
+
+.user{
+	flex-direction: column;
+}
+.user img{
+	width: 100%;
+	height: inherit;
+	border-radius: 10rem;
+}
+.user p{
+
+	margin: 0;
+	margin-top: 0.5rem;
+	font-size: 2rem;
 }
 </style>>
