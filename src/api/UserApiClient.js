@@ -7,89 +7,21 @@ export default class UserApiClient {
 	#axiosHttpClient = null;
 
 
-	async getAvatarImage() {
+	async getUser() {
 		try {
-			const avatarResponce = await this.#axiosHttpClient.get('http://localhost:5000/api/user/myprofile/img');
+			const avatarResponce = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/api/user/`);
 			if (avatarResponce != null && avatarResponce.data != null) {
 				return avatarResponce.data;
 			} else {
-				return 'myprofile.jpg';
+				alert('API вернула что-то не то');
 			}
 		}
 		catch (e) {
 			console.error(e);
-			return 'myprofile.jpg';
+			alert('Проверьте подключенние к API');
 		}
 	}
 
-	async getAvatarName() {
-		try {
-			const avatarResponce = await this.#axiosHttpClient.get('http://localhost:5000/api/user/myprofile/name');
-			if (avatarResponce != null && avatarResponce.data != null) {
-				return avatarResponce.data;
-			} else {
-				return 'noapi Кобозев Игорь';
-			}
-		}
-		catch (e) {
-			console.error(e);
-			return 'noapi Кобозев Игорь';
-		}
-	}
 
-	async getPersones() {
-		// try {
-		// const avatarResponce = await this.#axiosHttpClient.get('http://localhost:5000/api/user/persones');
-		// if (avatarResponce != null && avatarResponce.data != null) {
-		const persones = new Promise(() => {
-			setTimeout(() => {
-				return [
-					{
-						id: '1',
-						ProfileName: 'Иванов Иван',
-						ProfileFileName: 'myprofile.jpg',
-						prosonAge: '24',
-						prosonCity: 'Москва',
-						prosonWork: 'Университет синергия :D'
-					},
-					{
-						id: '2',
-						ProfileName: 'Гирасимов Семен',
-						ProfileFileName: 'myprofile.jpg',
-						prosonAge: '24',
-						prosonCity: 'Москва',
-						prosonWork: 'Университет синергия :D'
-					},
-					{
-						id: '3',
-						ProfileName: 'Климов Антон',
-						ProfileFileName: 'myprofile.jpg',
-						prosonAge: '24',
-						prosonCity: 'Москва',
-						prosonWork: 'Университет синергия :D'
-					},
-					{
-						id: '4',
-						ProfileName: 'Семенов Дмитрий',
-						ProfileFileName: 'myprofile.jpg',
-						prosonAge: '24',
-						prosonCity: 'Москва',
-						prosonWork: 'Университет синергия :D'
-					}
-				];
 
-			}, 500);
-		});
-		console.log(persones);
-		return persones;
-
-		// 	} else {
-		// 		return persones;
-		// 	}
-		// }
-		// catch (e) {
-		// 	console.error(e);
-		// 	return persones;
-		// }
-	}
 }

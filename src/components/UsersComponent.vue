@@ -9,7 +9,7 @@
       </div>
       <div class="users__block">
         <div v-for="item in persones" :key="item.id" class="users__item">
-            <UserAvatarComponent class="user" :user-avatar-text='item.ProfileName' :user-avatar-url='item.ProfileFileName' />
+            <UserAvatarComponent class="user" :user-avatar-text='item.profileName' :user-avatar-url='item.profileFileName' />
             <div class="users__item-info">
               <div class="users__item-age">Возраст: {{item.prosonAge}}</div>
               <div class="users__item-city">Город: {{item.prosonCity}}</div>
@@ -32,22 +32,27 @@ export default {
   },
   data() {
     return{
-      persones: this.$store.state.persones,
+      persones: this.$store.state.PersoneStore.persones,
       personesfilter: '',
     };
   },
   methods:{
     tryStore(){
-      this.$store.commit('increment');
-    console.log(this.$store.state.count);
-    console.log(this.$store.state.persones);
-     this.$store.dispatch('loadData');
+      this.$router.push('/user/id');
+
     }
+  },
+  async mounted() {
+    this.$store.subscribe((mutation) => {
+      if(mutation.type == "updatePosts"){
+        this.persones = this.$store.state.PersoneStore.persones;
+      }
+    })
+     await this.$store.dispatch('loadData');
   },
   watch:{
     personesfilter(newtext){
-      this.persones = this.$store.state.persones;
-      this.persones = this.persones.filter(person => person.ProfileName.includes(newtext))
+      this.persones = this.$store.state.PersoneStore.persones.filter(person => person.profileName.includes(newtext))
     }
   },
 }

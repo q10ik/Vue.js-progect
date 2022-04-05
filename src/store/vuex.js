@@ -1,14 +1,12 @@
-import Vuex from 'vuex';
+import Vue from 'vue'
+import Vuex from 'vuex'
+import PersoneStore from "./PersoneStore";
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-	state: {
-		count: 0
+	modules: {
+		PersoneStore,
 	},
-	mutations: {
-		increment(state) {
-			state.count++
-		}
-	}
 })
 
 export default store;

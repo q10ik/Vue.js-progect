@@ -28,15 +28,13 @@ export default {
   },
   async mounted() {
     const userApi = new UserApiClient();
-    const AvatarFileName = await userApi.getAvatarImage();
-    const AvatarName = await userApi.getAvatarName(); 
-    this.ProfileName = AvatarName; 
-    this.ProfileFileName = AvatarFileName; 
+    const Myprofile = await userApi.getUser();
+    this.ProfileName = Myprofile.firstName + Myprofile.lasName; 
+    this.ProfileFileName = Myprofile.avatar; 
 	},
   methods:{
   ChangeProfilename() {
     this.ShowInput = !this.ShowInput; 
-    console.log(this.ShowInput);
   }
   }
 }
