@@ -11,7 +11,7 @@ export default class EmployeeApiClient {
 
 	async getEmployee() {
 		try {
-			const employeeList = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/api/employee`);
+			const employeeList = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/employee`);
 
 			if (employeeList != null && employeeList.data != null && employeeList.status == 200) {
 				let emploeeArray = [];
@@ -31,7 +31,7 @@ export default class EmployeeApiClient {
 	}
 	async getEmployeeProfile(userID) {
 		try {
-			const employer = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/api/employee/${userID}`);
+			const employer = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/employee/${userID}`);
 
 			if (employer != null && employer.data != null && employer.status == 200) {
 				const emploeeModel = new EmploeeModel(employer.data);

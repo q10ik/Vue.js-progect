@@ -61,11 +61,12 @@ export default {
     if(this.redact){
     const userApi = new UserApiClient();
     const Profile = await userApi.getUser();
-    this.profileName = Profile.firstName + Profile.lasName; 
+    this.profileName = Profile.firstName + " " + Profile.lasName; 
     this.profileFileName = Profile.avatar;
     this.profileAge = Profile.age;
     this.profileCity = Profile.city;
     this.profileWork = Profile.work;} else {
+      await this.$store.dispatch('loadData');
       this.userID = this.$route.params.id;
       // const userApi = new EmployeeApiClient();
 			// const Emploer = await userApi.getEmployeeProfile(this.userID);
@@ -88,15 +89,17 @@ export default {
     if(this.redact){
     const userApi = new UserApiClient();
     const Profile = await userApi.getUser();
-    this.profileName = Profile.firstName + Profile.lasName; 
+    this.profileName = Profile.firstName + " " + Profile.lasName; 
     this.profileFileName = Profile.avatar;
     this.profileAge = Profile.age;
     this.profileCity = Profile.city;
     this.profileWork = Profile.work;} else {
+       await this.$store.dispatch('loadData');
       this.userID = this.$route.params.id;
       // const userApi = new EmployeeApiClient();
 			// const Emploer = await userApi.getEmployeeProfile(this.userID);
       const Emploer = this.$store.getters.filtaredPersonesByID(this.userID);
+      console.log(Emploer);
       this.profileName = Emploer[0].profileName; 
       this.profileFileName = Emploer[0].profileFileName;
       this.profileAge = Emploer[0].prosonAge;

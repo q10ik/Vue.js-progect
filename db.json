@@ -1,0 +1,46 @@
+{
+	"employee": [
+		{
+			"id": 1,
+			"profileName": "Иванов Иван",
+			"profileFileName": "persone1.jpg",
+			"prosonAge": "21",
+			"prosonCity": "Москва",
+			"prosonWork": "Университет синергия"
+		},
+		{
+			"id": 2,
+			"profileName": "Гирасимов Семен",
+			"profileFileName": "persone1.jpg",
+			"prosonAge": "22",
+			"prosonCity": "Санкт-Питербург",
+			"prosonWork": ""
+		},
+		{
+			"id": 3,
+			"profileName": "Климов Антон",
+			"profileFileName": "persone1.jpg",
+			"prosonAge": "23",
+			"prosonCity": "Москва",
+			"prosonWork": "Университет синергия"
+		},
+		{
+			"id": 4,
+			"profileName": "Семенов Дмитрий",
+			"profileFileName": "persone1.jpg",
+			"prosonAge": "24",
+			"prosonCity": "Санкт-Питербург",
+			"prosonWork": "Университет синергия"
+		}
+	],
+	"user": {
+		"id": 1,
+		"avatar": "myprofile.jpg",
+		"login": "George",
+		"firstName": "Ivan",
+		"lasName": "Petrov",
+		"age": "21",
+		"city": "Москва",
+		"work": "Университет Синергия"
+	}
+}

@@ -4,11 +4,11 @@ const PersoneStore = {
 	state: {
 		persones: [{
 			id: '1',
-			profileFileName: 'persone1.jpg',
-			profileName: 'Иванов Иван',
-			prosonAge: '24',
-			prosonCity: 'Москва',
-			prosonWork: 'Университет синергия :D'
+			profileFileName: 'dafault.jpg',
+			profileName: '',
+			prosonAge: '',
+			prosonCity: '',
+			prosonWork: ''
 		}],
 		loading: true,
 	},
