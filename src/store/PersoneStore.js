@@ -11,12 +11,8 @@ const PersoneStore = {
 			prosonWork: 'Университет синергия :D'
 		}],
 		loading: true,
-		count: 0,
 	},
 	mutations: {
-		increment(state) {
-			state.count++
-		},
 		updatePosts(state, emploee) {
 			state.persones = emploee
 		},
@@ -32,6 +28,17 @@ const PersoneStore = {
 			commit('changeLoadingState', false);
 
 		},
+	},
+	getters: {
+		getPersones(state) {
+			return state.persones;
+		},
+		filtaredPersonesByName: (state) => (NameFilter) => {
+			return state.persones.filter(person => person.profileName.includes(NameFilter));
+		},
+		filtaredPersonesById: (state) => (Id) => {
+			return state.persones.filter(person => person.id == Id);
+		}
 	}
 };
 export default PersoneStore;

@@ -14,7 +14,7 @@
               <div class="users__item-age">Возраст: {{item.prosonAge}}</div>
               <div class="users__item-city">Город: {{item.prosonCity}}</div>
               <div class="users__item-work">Место работы: {{item.prosonWork}}</div>
-              <a href="#" @click=" tryStore()" class="users__item-button">Посмотреть профиль</a>
+              <a href="#" @click=" tryStore(item.id)" class="users__item-button">Посмотреть профиль</a>
             </div>
         </div>
       </div>
@@ -32,27 +32,27 @@ export default {
   },
   data() {
     return{
-      persones: this.$store.state.PersoneStore.persones,
+      persones: this.$store.getters.getPersones,
       personesfilter: '',
     };
   },
   methods:{
-    tryStore(){
-      this.$router.push('/user/id');
+    tryStore(userid){
+      this.$router.push('/user/'+ userid);
 
     }
   },
   async mounted() {
     this.$store.subscribe((mutation) => {
       if(mutation.type == "updatePosts"){
-        this.persones = this.$store.state.PersoneStore.persones;
+        this.persones = this.$store.getters.getPersones;
       }
     })
      await this.$store.dispatch('loadData');
   },
   watch:{
     personesfilter(newtext){
-      this.persones = this.$store.state.PersoneStore.persones.filter(person => person.profileName.includes(newtext))
+      this.persones = this.$store.getters.filtaredPersonesByName(newtext);
     }
   },
 }
