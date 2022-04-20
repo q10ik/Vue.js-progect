@@ -10,7 +10,7 @@ export default class UserApiClient {
 
 	async getUser() {
 		try {
-			const avatarResponce = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST}/user/`);
+			const avatarResponce = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST_LOCAL}/user/`);
 			if (avatarResponce != null && avatarResponce.data != null && avatarResponce.status == 200) {
 				const userModel = new UserModel(avatarResponce.data);
 				return userModel;

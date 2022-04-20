@@ -35,7 +35,7 @@ export default {
       if(auntification == true){
         this.$store.commit('changeAuthState', true);
         alert('вы вошли');
-        this.$router.push('/profile');
+        this.$router.push('/');
       } else{
         alert('Повторите попытку');
       }

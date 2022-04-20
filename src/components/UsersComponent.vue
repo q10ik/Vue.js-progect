@@ -105,10 +105,12 @@ export default {
       padding: 0.5rem;
       margin-top: 3rem;
       width: 100%;
+           margin-bottom:3rem;
       @media (min-width: 768px) {
       display: grid;
       grid-template-columns: repeat(2,1fr);
       gap: 0.5rem;
+       
       }
      
 		}

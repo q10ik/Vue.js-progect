@@ -9,27 +9,30 @@ import store from '../store/vuex';
 Vue.use(VueRouter);
 
 
+const routes = [
+	{ path: '/', component: HomeComponent, meta:{ onlyAuthorized: false } },
+	{ path: '/login', name: 'login', component: AutorizationComponent, meta:{ onlyAuthorized: false }  },
+	{	path: '/profile', component: ProfileComponent, props: { RedactProfile: true, ProfileTitle: "Мой профиль" }, meta:{ onlyAuthorized: true }},
+	{ path: '/users', component: UsersComponent, meta:{ onlyAuthorized: false }},
+	{ path: '/user/:id', component: ProfileComponent, props: { ProfileTitle: "Профиль" }, meta:{ onlyAuthorized: true } }
+];
 
 const router = new VueRouter({
 	mode: 'history',
 	base: __dirname,
-	routes: [
-		{ path: '/', component: HomeComponent },
-		{ path: '/login', name: 'login', component: AutorizationComponent },
-		{
-			path: '/profile', component: ProfileComponent, props: { RedactProfile: true, ProfileTitle: "Мой профиль" }, beforeEnter: (to, from, next) => {
-				if (!store.getters.AuntificationState) {
-					return next({
-						name: 'login'
-					})
-				} else {
-					next();
+	routes: routes
+});
 
-				}
-			}
-		},
-		{ path: '/users', component: UsersComponent },
-		{ path: '/user/:id', component: ProfileComponent, props: { ProfileTitle: "Профиль" } }
-	]
-})
+router.beforeEach(async(to, from, next) => {
+if(!to.meta.onlyAuthorized){
+ return next();
+}
+const isAuthed = store.getters.AuntificationState;
+if(!isAuthed) {
+	next({path:"/login"});
+} else{
+	next();
+}
+});
+
 export default router;
