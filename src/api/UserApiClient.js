@@ -8,9 +8,16 @@ export default class UserApiClient {
 	#axiosHttpClient = null;
 
 
-	async getUser() {
+	async getUser(token) {
+		const headers = {
+			"Authorization": token
+		}
+	
+		const httpCloent = axios.create({
+			headers
+		});
 		try {
-			const avatarResponce = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST_LOCAL}/user/`);
+			const avatarResponce = await httpCloent.get(`${process.env.VUE_APP_API_HOST_LOCAL}/user/`);
 			if (avatarResponce != null && avatarResponce.data != null && avatarResponce.status == 200) {
 				const userModel = new UserModel(avatarResponce.data);
 				return userModel;

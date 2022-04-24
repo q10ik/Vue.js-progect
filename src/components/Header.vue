@@ -47,10 +47,10 @@ export default {
     },
     openMenu(){
       this.menuOpen=!this.menuOpen;
-      console.log(this.userAuth);
     },
     quitAuth(){
       this.$store.commit('changeAuthState', false);
+      this.$store.commit('token', '');
        this.$router.push('/login');
 
     }
@@ -78,6 +78,9 @@ nav{
 a {
   color: #42b983;
   font-size: 2rem;
+  &:hover{
+    color: #42b983;
+  }
 }
 .header{
    background: #11253d;

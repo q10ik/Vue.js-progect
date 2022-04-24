@@ -25,7 +25,6 @@
 
 <script>
 import UserAvatarComponent from '../controls/UserAvatarComponent.vue';
-import UserApiClient from "../api/UserApiClient";
 // import EmployeeApiClient from "../api/EmployeeApiClient";
 
 export default {
@@ -47,7 +46,7 @@ export default {
   data() {
     return{
       profiletitle: this.ProfileTitle,
-      profileName:'',
+      profileName:'-',
       profileFileName:'dafault.jpg',
       profileAge: '',
       profileCity: '',
@@ -59,17 +58,18 @@ export default {
   },
   async mounted() {
     if(this.redact){
-    const userApi = new UserApiClient();
-    const Profile = await userApi.getUser();
-    this.profileName = Profile.firstName + " " + Profile.lasName; 
-    this.profileFileName = Profile.avatar;
-    this.profileAge = Profile.age;
-    this.profileCity = Profile.city;
-    this.profileWork = Profile.work;} else {
+     console.log(1);
+      console.log(4);
+      this.profileName = this.$store.getters.getProfilename;
+      this.profileFileName = this.$store.getters.getAvatar;
+      this.profileAge = this.$store.getters.getAge;
+      this.profileCity = this.$store.getters.getCity;
+      this.profileWork = this.$store.getters.getWork;
+    } else {
       await this.$store.dispatch('loadData');
       this.userID = this.$route.params.id;
       // const userApi = new EmployeeApiClient();
-			// const Emploer = await userApi.getEmployeeProfile(this.userID);
+			// const Emploer = await userApi.getEmployeeProfile(this.userID,this.$store.state.AuntificationStore.token);
       const Emploer = this.$store.getters.filtaredPersonesById(this.userID);
       this.profileName = Emploer[0].profileName; 
       this.profileFileName = Emploer[0].profileFileName;
@@ -87,19 +87,19 @@ export default {
     async RedactProfile(newRedactAtribute){
         this.redact = newRedactAtribute;
     if(this.redact){
-    const userApi = new UserApiClient();
-    const Profile = await userApi.getUser();
-    this.profileName = Profile.firstName + " " + Profile.lasName; 
-    this.profileFileName = Profile.avatar;
-    this.profileAge = Profile.age;
-    this.profileCity = Profile.city;
-    this.profileWork = Profile.work;} else {
+      console.log(1);
+      console.log(4);
+      this.profileName = this.$store.getters.getProfilename;
+      this.profileFileName = this.$store.getters.getAvatar;
+      this.profileAge = this.$store.getters.getAge;
+      this.profileCity = this.$store.getters.getCity;
+      this.profileWork = this.$store.getters.getWork;
+    } else {
        await this.$store.dispatch('loadData');
       this.userID = this.$route.params.id;
       // const userApi = new EmployeeApiClient();
 			// const Emploer = await userApi.getEmployeeProfile(this.userID);
       const Emploer = this.$store.getters.filtaredPersonesByID(this.userID);
-      console.log(Emploer);
       this.profileName = Emploer[0].profileName; 
       this.profileFileName = Emploer[0].profileFileName;
       this.profileAge = Emploer[0].prosonAge;
@@ -109,6 +109,14 @@ export default {
      },
      ProfileTitle(newTitle){
        this.profiletitle = newTitle;
+     },
+     showInput(newState){
+       if(newState == 0){
+        this.$store.commit('updateProfileName', this.profileName);
+        this.$store.commit('updateAge',this.profileAge);
+        this.$store.commit('updeteCity', this.profileCity);
+        this.$store.commit('updateWork', this.profileWork);
+        }
      }
    }
 }

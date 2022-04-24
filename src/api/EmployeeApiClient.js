@@ -3,15 +3,19 @@ import EmploeeModel from "../models/EmploeeModel";
 
 
 export default class EmployeeApiClient {
-	constructor() {
-		this.#axiosHttpClient = axios.create();
-	}
-	#axiosHttpClient = null;
 
 
-	async getEmployee() {
+	async getEmployee(token) {
+		const headers = {
+			"Authorization": token
+		}
+	
+		const httpCloent = axios.create({
+			headers
+		});
+
 		try {
-			const employeeList = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST_LOCAL}/employee`);
+			const employeeList = await httpCloent.get(`${process.env.VUE_APP_API_HOST_LOCAL}/employee`);
 
 			if (employeeList != null && employeeList.data != null && employeeList.status == 200) {
 				let emploeeArray = [];
@@ -29,9 +33,16 @@ export default class EmployeeApiClient {
 			alert('Проверьте подключенние к api');
 		}
 	}
-	async getEmployeeProfile(userID) {
+	async getEmployeeProfile(userID, token) {
+		const headers = {
+			"Authorization": token
+		}
+	
+		const httpCloent = axios.create({
+			headers
+		});
 		try {
-			const employer = await this.#axiosHttpClient.get(`${process.env.VUE_APP_API_HOST_LOCAL}/employee/${userID}`);
+			const employer = await httpCloent.get(`${process.env.VUE_APP_API_HOST_LOCAL}/employee/${userID}`);
 
 			if (employer != null && employer.data != null && employer.status == 200) {
 				const emploeeModel = new EmploeeModel(employer.data);

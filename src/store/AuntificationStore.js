@@ -1,15 +1,18 @@
-
+import AutorizationApiClient from "../api/AutorizationApiClient";
 
 const AuntificationStore = {
 	state: {
-
+		token: "",
 		auth: 0,
-		login: "123",
-		password: "123",
+		login: "login",
+		password: "passw",
 
 	},
 	mutations: {
-
+		token(state, payload){
+			state.token = payload;
+			console.log(state.token);
+		},
 		changeAuthState(state, loading) {
 			state.auth = loading;
 		}
@@ -18,6 +21,17 @@ const AuntificationStore = {
 		AuntificationLoad({ commit }) {
 			commit('changeAuthState', true);
 		},
+		async authorizeAsync(state, payload){
+			const authApiClient = new AutorizationApiClient();
+			const authToken = await authApiClient.Auth(payload.login, payload.password);
+			if (authToken) {
+				this.commit("token",authToken);
+				
+				return true;
+			}
+				return false;
+			
+		}
 	},
 	getters: {
 		TryAuntification: (state) => (log, pass) => {

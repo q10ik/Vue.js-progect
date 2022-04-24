@@ -1,6 +1,6 @@
 <template>
   <section class="autorization">
-    <div class="autorization__inner" @submit="FormValidation">
+    <div class="autorization__inner" @submit="authMe">
       <h1 class="autorization__title">Авторизация</h1>
       <form class="autorization__form">
         <input type="text" placeholder="Логин" value="" v-model="authlogin" class="autorization__input">
@@ -39,8 +39,18 @@ export default {
       } else{
         alert('Повторите попытку');
       }
-      // console.log(this.authlogin);
-      // console.log(this.authpass);
+    },
+    async authMe(event){
+       event.preventDefault();
+      const isAuthenticated = await this.$store.dispatch ('authorizeAsync', {login: this.authlogin, password: this.authpass});
+      if (isAuthenticated) {
+        this.$store.commit('changeAuthState', true);
+         alert('вы вошли');
+        this.$store.dispatch('loadProfile');
+        this.$router.push('/');
+      } else {
+        alert('Повторите попытку');
+      }
     }
   }
 }

@@ -47,12 +47,13 @@ export default {
       if(mutation.type == "updatePosts"){
         this.persones = this.$store.getters.getPersones;
       }
-    })
+    });
      await this.$store.dispatch('loadData');
   },
   watch:{
     personesfilter(newtext){
-      this.persones = this.$store.getters.filtaredPersonesByName(newtext);
+      const newupprtext = newtext.toUpperCase();
+      this.persones = this.$store.getters.filtaredPersonesByName(newupprtext);
     }
   },
 }

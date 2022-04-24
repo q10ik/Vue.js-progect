@@ -14,7 +14,7 @@ const routes = [
 	{ path: '/login', name: 'login', component: AutorizationComponent, meta:{ onlyAuthorized: false }  },
 	{	path: '/profile', component: ProfileComponent, props: { RedactProfile: true, ProfileTitle: "Мой профиль" }, meta:{ onlyAuthorized: true }},
 	{ path: '/users', component: UsersComponent, meta:{ onlyAuthorized: false }},
-	{ path: '/user/:id', component: ProfileComponent, props: { ProfileTitle: "Профиль" }, meta:{ onlyAuthorized: true } }
+	{ path: '/user/:id', component: ProfileComponent, props: { ProfileTitle: "Профиль" }, meta:{ onlyAuthorized: false } }
 ];
 
 const router = new VueRouter({

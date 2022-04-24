@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import PersoneStore from "./PersoneStore";
+import ProfileStore from "./ProfileStore";
 import AuntificationStore from "./AuntificationStore";
 import VuexPersistence from 'vuex-persist';
 Vue.use(Vuex);
@@ -11,7 +12,8 @@ const vuexLocal = new VuexPersistence ({
 const store = new Vuex.Store({
 	modules: {
 		PersoneStore,
-		AuntificationStore
+		AuntificationStore,
+		ProfileStore
 	},
 	plugins:[vuexLocal.plugin]
 })
