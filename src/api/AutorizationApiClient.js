@@ -24,6 +24,7 @@ export default class AutorizationApiClient {
 
 		try {
 			const responce = await httpClient.post(`${process.env.VUE_APP_API_HOST_LOCAL}/auth/${login}/${password}`, authModel);
+			//
 
 			if (responce != null && responce.data != null && responce.status == 200) {
 				return responce.data;
