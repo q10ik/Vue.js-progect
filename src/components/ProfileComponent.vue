@@ -58,8 +58,6 @@ export default {
   },
   async mounted() {
     if(this.redact){
-     console.log(1);
-      console.log(4);
       this.profileName = this.$store.getters.getProfilename;
       this.profileFileName = this.$store.getters.getAvatar;
       this.profileAge = this.$store.getters.getAge;
@@ -87,8 +85,6 @@ export default {
     async RedactProfile(newRedactAtribute){
         this.redact = newRedactAtribute;
     if(this.redact){
-      console.log(1);
-      console.log(4);
       this.profileName = this.$store.getters.getProfilename;
       this.profileFileName = this.$store.getters.getAvatar;
       this.profileAge = this.$store.getters.getAge;

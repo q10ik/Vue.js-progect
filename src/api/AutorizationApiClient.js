@@ -34,7 +34,6 @@ export default class AutorizationApiClient {
 		}
 		catch (e) {
 			console.error(e);
-			alert('Проверьте подключенние к api');
 		}
 	}
 }

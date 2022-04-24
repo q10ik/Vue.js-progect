@@ -12,14 +12,12 @@ const ProfileStore = {
  },
  mutations:{
 	updateProfileName(state, newname){
-		console.log(3);
 		state.profileName = newname;
 	},
 	updateAge(state,newage){
 		state.age = newage;
 	},
 	updeteCity(state,newcity){
-		console.log(6);
 		state.city = newcity;
 	},
 	updateWork(state,newwork){
@@ -27,12 +25,10 @@ const ProfileStore = {
 	},
 	updateAvatar(state,newavatar){
 		state.avatar = newavatar;
-		console.log(state.avatar);
 	}
  },
  actions:{
 		async loadProfile({commit}) {
-			console.log(2);
 			const userApi = new UserApiClient();
 			const Profile = await userApi.getUser(AuntificationStore.state.token);
 			commit('updateProfileName', Profile.firstName+' '+Profile.lasName);
@@ -44,7 +40,6 @@ const ProfileStore = {
  },
  getters: {
 		getProfilename(state){
-			console.log(5);
 		return state.profileName;
 		},
 		getAvatar(state){

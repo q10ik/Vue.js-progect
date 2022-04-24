@@ -26,7 +26,6 @@ const AuntificationStore = {
 			const authToken = await authApiClient.Auth(payload.login, payload.password);
 			if (authToken) {
 				this.commit("token",authToken);
-				
 				return true;
 			}
 				return false;
